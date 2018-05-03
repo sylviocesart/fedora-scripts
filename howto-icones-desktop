@@ -1,0 +1,32 @@
+Alternative solution
+
+As an alternative to the gnome-shell extension, it's also possible to use nemo to handle only the desktop.
+
+
+Instructions
+
+1) Install nemo from your distribution's repositories. On Fedora, enter this command on the Terminal application:
+
+sudo dnf install nemo
+
+2)  Open a text editor and copy the following text into a new empty file:
+
+[Desktop Entry]
+Type=Application
+Name=Nemo
+Comment=Start Nemo desktop at log in
+Exec=nemo-desktop
+OnlyShowIn=GNOME;
+AutostartCondition=GSettings org.nemo.desktop show-desktop-icons
+X-GNOME-AutoRestart=true
+NoDisplay=true
+3) Save the text file as ~/.config/autostart/nemo-autostart-with-gnome.desktop
+
+And that's it!
+Next time you log in, nemo will automatically display icons over the desktop background.
+If you don't want to log out, you can also manually start it using the Alt+F2 prompt to run nemo-desktop
+
+Optional step:
+In case you want Nemo to behave more similarly to nautilus desktop layout, you can enable the setting running this command on the terminal:
+
+gsettings set org.nemo.desktop use-desktop-grid false
